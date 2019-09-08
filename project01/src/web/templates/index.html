@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="{{ url_for('static', filename='jquery.min.js')}}"></script>
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.css' )}}">
+    <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.js')}}"></script>
+</head>
+<body>
+    <h1>新闻言论提取</h1>
+    <form action="extractViews">
+        <p>
+            <label for="newsContent">请输入新闻内容:</label>
+            <textarea id="newsContent" name="newsContent" cols="40" rows="5" align="left"></textarea>
+        </p>
+        <input type="submit" name="">
+    </form>
+<div class="container">
+<table style="width: 1000px;" class="table table-striped table-hover table-bordered">
+    <thead>
+    <th>人物</th>
+    <th>观点</th>
+    </thead>
+    <tbody>
+      <meta charset="UTF-8">
+      {% for item in views %}
+        <tr>
+            <td style="width: 200px;">{{ item.subj}}</td>
+            <td>{{ item.view}}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+</table>
+</div>
+</body>
+</html>
