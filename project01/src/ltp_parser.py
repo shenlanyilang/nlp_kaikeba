@@ -5,7 +5,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from common.constants import candidate_words
-from common.utils import cut_sent, read_json, write_json, puncs
+from common.utils import cut_sent, read_json, write_json, puncs, init_folder
 import random
 import os
 from SentSim import SentEmbedding
@@ -163,6 +163,8 @@ def text2json(content:str):
     return data
 
 def format_data(outpath='./data/news_content.json'):
+    dirpath = os.path.dirname(outpath)
+    init_folder(dirpath)
     data = query_db()
     res = []
     for news in data:
